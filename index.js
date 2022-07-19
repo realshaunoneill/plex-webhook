@@ -1,12 +1,20 @@
 const Busboy = require('busboy');
 const express = require('express');
+require('dotenv').config();
 const app = new express();
 
-const PORT = 9889 // Change Port here if needed
+const PORT = 9889;
+const R7_LOGGING_KEY = process.env.R7_LOGGING_KEY;
 
 const r7Logger = require('r7insight_node');
+
+if (!R7_LOGGING_KEY) {
+  console.log('R7_LOGGING_KEY not set');
+  process.exit(1);
+}
+
 const Logger = new r7Logger({
-  token: '3074d776-4639-424b-889f-3f2c569b0d7c',
+  token: R7_LOGGING_KEY,
   region: 'eu',
   console: false,
   withLevel: false,
