@@ -3,7 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const app = new express();
 
-const PORT = 9889;
+const PORT = 8080;
 const R7_LOGGING_KEY = process.env.R7_LOGGING_KEY;
 
 const r7Logger = require('r7insight_node');
